@@ -50,11 +50,6 @@ public class Ball : MonoBehaviour {
         transform.position = paddlePos + paddleToBallVector;
     }
 
-    public void resetBallPositon()
-    {
-	hasStarted = false;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 velocityTweak = new Vector2
