@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LoseCollider : MonoBehaviour {
 
+
+
 	Ball ball; 
 	GameSession gs;
 	int currentLives;
@@ -21,13 +23,18 @@ public class LoseCollider : MonoBehaviour {
 	
 		if(currentLives == 0)
 	   {
+
 		SceneManager.LoadScene("Game Over");
+		if(gs.HighscoreCheck()){
+
+		}
+
 	   }
 	   
 	else
 	{
 		SceneManager.LoadScene("Level 1");
-		//ball.resetBallPositon();
+		
 		
     	}
     }

@@ -11,6 +11,7 @@ public class GameSession : MonoBehaviour {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] bool isAutoPlayEnabled;
+    [SerializeField] TextMeshProUGUI highscoreText;
 
     // state variables
     [SerializeField] int currentScore = 0;
@@ -33,7 +34,8 @@ public class GameSession : MonoBehaviour {
     private void Start()
     {
         scoreText.text = currentScore.ToString(); 
-        livesText.text = "Lives : "+currentLives.ToString();    
+        livesText.text = "Lives : "+currentLives.ToString(); 
+        highscoreText.text="";   
     }
 
     // Update is called once per frame
@@ -53,11 +55,23 @@ public class GameSession : MonoBehaviour {
     return currentLives;  
             
     }
+    public bool HighscoreCheck(){
+        bool check;
+        int highscore=PlayerPrefs.GetInt("HIGHSCORE");
+        if(currentScore>highscore){
+            check=true;
+            highscoreText.text="Congrats you have a new highscore !!";
+
+        }
+        else{check=false;}
+        return check;
+    }
 
     public void ResetGame()
     {
         Destroy(gameObject);
     }
+    
     public bool IsAutoPlayEnabled()
     {
         return isAutoPlayEnabled;
