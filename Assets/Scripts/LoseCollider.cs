@@ -18,17 +18,12 @@ public class LoseCollider : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-
-
 	currentLives = gs.UpdateLives();
 
 		if(currentLives == 0)
 	   {
 
 		SceneManager.LoadScene("Game Over");
-		// if(gs.HighscoreCheck()){
-
-		// }
 
 	   }
 
@@ -38,8 +33,6 @@ public class LoseCollider : MonoBehaviour {
 
     	}
 
-
-        // SceneManager.LoadScene("Game Over");
 
     }
 
