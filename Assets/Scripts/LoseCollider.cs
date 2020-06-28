@@ -19,6 +19,7 @@ public class LoseCollider : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+
 	
 	currentLives = gs.UpdateLives();	
 	
@@ -40,6 +41,8 @@ public class LoseCollider : MonoBehaviour {
     	}
 
       
+        SceneManager.LoadScene("Game Over");
+
     }
 
 }
