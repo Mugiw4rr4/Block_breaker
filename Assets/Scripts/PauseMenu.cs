@@ -43,7 +43,7 @@ void Pause (){
     pauseMenu.SetActive(true);
     Time.timeScale = 0f;
     isPaused = true;
-    Debug.Log("Game paused");	
+    Debug.Log("Jeu en pause!");	
 }
 
 
