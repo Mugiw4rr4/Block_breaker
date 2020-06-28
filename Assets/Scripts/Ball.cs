@@ -35,6 +35,11 @@ public class Ball : MonoBehaviour {
         }
     }
 
+    public void resetPositionBall()
+    {
+	hasStarted = false;
+    }
+
     private void LaunchOnMouseClick()
     {
         if (Input.GetMouseButtonDown(0))
