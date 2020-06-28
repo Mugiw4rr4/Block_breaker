@@ -34,7 +34,7 @@ public class GameSession : MonoBehaviour {
     private void Start()
     {
         scoreText.text = currentScore.ToString(); 
-        livesText.text = "Lives : "+currentLives.ToString(); 
+        livesText.text = "vie restante : "+currentLives.ToString(); 
         highscoreText.text="";   
     }
 
