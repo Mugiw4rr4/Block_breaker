@@ -4,7 +4,7 @@ public class Ball : MonoBehaviour {
 
     // config params
     [SerializeField] Paddle paddle1;
-    [SerializeField] float xPush = 2f;
+    [SerializeField] float xPush = 2.5f;
     [SerializeField] float yPush = 15f;
     [SerializeField] AudioClip[] ballSounds;
     [SerializeField] float randomFactor = 0.2f;
@@ -35,11 +35,6 @@ public class Ball : MonoBehaviour {
         }
     }
 
-    public void resetPositionBall()
-    {
-	hasStarted = false;
-    }
-
     private void LaunchOnMouseClick()
     {
         if (Input.GetMouseButtonDown(0))
@@ -53,6 +48,11 @@ public class Ball : MonoBehaviour {
     {
         Vector2 paddlePos = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y);
         transform.position = paddlePos + paddleToBallVector;
+    }
+
+    public void resetBallPositon()
+    {
+	hasStarted = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

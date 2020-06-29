@@ -1,12 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoseCollider : MonoBehaviour {
-
-
-	Ball ball;
+	
+	Ball ball; 
 	GameSession gs;
 	int currentLives;
 
@@ -17,23 +16,19 @@ public class LoseCollider : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-	currentLives = gs.UpdateLives();
-
+	
+	currentLives = gs.UpdateLives();	
+	
 		if(currentLives == 0)
 	   {
-
-		SceneManager.LoadScene("Game Over");
-
+		SceneManager.LoadScene("Partie terminée .. vous avez perdu x)");
 	   }
-
+	   
 	else
 	{
-		ball.resetPositionBall();
-
+		ball.resetBallPosition();
+		
     	}
-
-
     }
 
 }

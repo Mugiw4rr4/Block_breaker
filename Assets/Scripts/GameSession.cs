@@ -7,16 +7,15 @@ public class GameSession : MonoBehaviour {
 
     // config params
     [Range(0.1f, 10f)] [SerializeField] float gameSpeed = 1f;
-    [SerializeField] int pointsPerBlockDestroyed = 83;
+    [SerializeField] int pointsPerBlockDestroyed = 100;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI livesText;
+    [SerializeField] TextMeshProUGUI livesText;	
     [SerializeField] bool isAutoPlayEnabled;
-    [SerializeField] TextMeshProUGUI highscoreText;
+    [SerializeField] bool isPaused = false;	
 
     // state variables
     [SerializeField] int currentScore = 0;
-    [SerializeField] int currentLives = 3;
-
+    [SerializeField] int currentLives = 5;
     private void Awake()
     {
         int gameStatusCount = FindObjectsOfType<GameSession>().Length;
@@ -33,45 +32,44 @@ public class GameSession : MonoBehaviour {
 
     private void Start()
     {
-        scoreText.text = currentScore.ToString(); 
-        livesText.text = "vie restante : "+currentLives.ToString(); 
-        highscoreText.text="";   
+        scoreText.text = currentScore.ToString();  
+	livesText.text = "Lives : "+currentLives.ToString();  
     }
 
     // Update is called once per frame
     void Update () {
-        Time.timeScale = gameSpeed;
-	}
+	if(Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+    {
+ 
+       Time.timeScale = 0;
+       isPaused = true;
+    }
+    else if(Input.GetKeyDown(KeyCode.Escape) && isPaused)
+    {
+       Time.timeScale = 1;
+       isPaused = false;    
+    } 
+	
+   }
 
     public void AddToScore()
     {
         currentScore += pointsPerBlockDestroyed;
         scoreText.text = currentScore.ToString();
     }
+
     public int UpdateLives()
     {
-    currentLives = currentLives-1;
-    livesText.text = "Lives : "+currentLives.ToString();
-    return currentLives;  
-            
+	currentLives = currentLives-1;
+	livesText.text = "Vies restantes : "+currentLives.ToString();
+	return currentLives;  
+    		
     }
-    public bool HighscoreCheck(){
-        bool check;
-        int highscore=PlayerPrefs.GetInt("HIGHSCORE");
-        if(currentScore>highscore){
-            check=true;
-            highscoreText.text="Congrats you have a new highscore !!";
-
-        }
-        else{check=false;}
-        return check;
-    }
-
+	
     public void ResetGame()
     {
         Destroy(gameObject);
     }
-    
     public bool IsAutoPlayEnabled()
     {
         return isAutoPlayEnabled;
